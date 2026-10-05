@@ -244,7 +244,7 @@ Confidence Engine
               │
               ▼
 Service Intelligence
-
+```
 ---
 
 # Reference Use Case
