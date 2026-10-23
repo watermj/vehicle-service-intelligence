@@ -55,11 +55,13 @@ Learning
 
 The current implementation uses interpretable statistical and machine-learning methods including PCA, regularized Mahalanobis distance, and Isolation Forest. The objective is not to demonstrate a production-ready predictive-maintenance system, but to demonstrate how **vehicle intelligence can become trustworthy Service Intelligence**.
 
-### Agentic Diagnostic Assistant — implementation framework
+### Next Evolution — Agentic Diagnostic Assistant
 
-A public implementation framework is now available in [`agent/README.md`](./agent/README.md). It defines a Python + LLM API tool-calling architecture for multi-step diagnostic workflows, targeted evidence collection, explicit uncertainty, and human-in-the-loop technician approval.
+Vehicle Service Intelligence now continues as a separate project: **[Agentic Diagnostic Assistant](https://github.com/watermj/agentic-diagnostic-assistant)**.
 
-**Current status:** architecture and implementation scaffold published; working agent prototype in development.
+The next project adds an LLM-based diagnostic reasoning and orchestration layer using tool/function calling, targeted evidence collection, explicit uncertainty, and human-in-the-loop technician review.
+
+**Current status:** architecture and implementation framework published; working prototype in development.
 
 ### Relevance to AI-Powered Vehicle Diagnostics
 
