@@ -6,6 +6,87 @@
 
 ---
 
+## Executive Summary
+
+Modern vehicles continuously generate signals about their own health, but turning that telemetry into a trustworthy service decision requires more than detecting an anomaly.
+
+**Vehicle Service Intelligence** explores an end-to-end decision architecture for converting vehicle telemetry into evidence-backed diagnostic and service actions. The project asks a practical question:
+
+> **When can vehicle telemetry be trusted to make a service decision?**
+
+Using production-vehicle telemetry from a 2024 Fisker Ocean, the reference use case — **Parked Energy & Wake Intelligence** — develops a workflow that:
+
+- validates whether vehicle signals are fresh and trustworthy,
+- determines the vehicle's expected operating context,
+- characterizes known-normal behavior,
+- detects behavior inconsistent with that context,
+- separates behavioral confidence from root-cause confidence,
+- suppresses premature customer or technician notifications,
+- identifies what additional diagnostic evidence should be collected, and
+- translates accumulated evidence into the appropriate next service action.
+
+The core design principle is:
+
+> **Anomaly ≠ Notification**
+
+A statistically unusual vehicle state is evidence, not a diagnosis. When evidence is insufficient, the system should gather the minimum additional information required to make a better decision rather than prematurely declaring a fault.
+
+The resulting architecture connects:
+
+```text
+Vehicle Signals
+      ↓
+Signal Validity & Operating Context
+      ↓
+Expected Behavior
+      ↓
+Behavioral Deviation
+      ↓
+Confidence Engine
+      ↓
+Targeted Evidence Collection
+      ↓
+Service Intelligence
+      ↓
+Verified Outcome
+      ↓
+Learning
+```
+
+The current implementation uses interpretable statistical and machine-learning methods including PCA, regularized Mahalanobis distance, and Isolation Forest. The objective is not to demonstrate a production-ready predictive-maintenance system, but to demonstrate how **vehicle intelligence can become trustworthy Service Intelligence**.
+
+### Relevance to AI-Powered Vehicle Diagnostics
+
+This architecture provides a foundation for AI-powered diagnostic assistants and agentic service workflows.
+
+Before an AI assistant can reason reliably about a fault, it needs trustworthy vehicle state, operating context, diagnostic evidence, and an explicit representation of uncertainty. Vehicle Service Intelligence provides that evidence layer.
+
+A future diagnostic intelligence layer could combine these vehicle-health findings with service documentation, diagnostic procedures, repair history, and technician feedback to support:
+
+```text
+Validated Vehicle Evidence
+      ↓
+Diagnostic Context
+      ↓
+AI / LLM Diagnostic Assistant
+      ↓
+Multi-Step Diagnostic Agent
+      ↓
+Recommended Next Action
+      ↓
+Technician Review / Execution
+      ↓
+Verified Repair Outcome
+      ↓
+Learning
+```
+
+In this model, AI does not replace deterministic vehicle diagnostics or technician judgment. It helps **reason across evidence, orchestrate diagnostic steps, identify missing information, and recommend the next-best action**.
+
+The longer-term opportunity is a reusable intelligence layer spanning vehicle firmware, cloud diagnostics, AI-assisted reasoning, and service operations — while maintaining traceability from the original vehicle signal through the eventual repair outcome.
+
+---
+
 ## Overview
 
 Modern vehicles generate enormous amounts of telemetry describing vehicle
@@ -244,7 +325,7 @@ Confidence Engine
               │
               ▼
 Service Intelligence
-```
+
 ---
 
 # Reference Use Case
